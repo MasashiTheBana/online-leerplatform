@@ -1,9 +1,15 @@
 # Online Leerplatform - Cursus & Abonnement Beheer
 
-Een moderne webapplicatie voor het beheren van cursussen, gebruikers en abonnementen. Gebouwd met PHP en MySQL.
+Een moderne webapplicatie voor het beheren van cursussen, gebruikers en abonnementen. Gebouwd met **PHP 8** en **MySQL/MariaDB**, met **Bootstrap 5** UI, **rolgebaseerde toegang** (admin / docent / student) en **PDO prepared statements**.
+
+![Stack](https://img.shields.io/badge/PHP-8.x-777BB4?logo=php&logoColor=white)
+![DB](https://img.shields.io/badge/MariaDB-10.4-003545?logo=mariadb&logoColor=white)
+![UI](https://img.shields.io/badge/Bootstrap-5.3-7952B3?logo=bootstrap&logoColor=white)
+![License](https://img.shields.io/badge/license-Educational-blue)
 
 ## Inhoudsopgave
 
+- [Screenshots](#screenshots)
 - [Functies](#functies)
 - [Vereisten](#vereisten)
 - [Installatie](#installatie)
@@ -11,6 +17,23 @@ Een moderne webapplicatie voor het beheren van cursussen, gebruikers en abonneme
 - [Gebruik](#gebruik)
 - [Beveiliging](#beveiliging)
 - [Projectstructuur](#projectstructuur)
+
+## Screenshots
+
+### Inlogpagina
+![Login](screenshots/01-login.png)
+
+### Admin-dashboard met statistieken
+![Dashboard](screenshots/02-dashboard-admin.png)
+
+### Cursus-overzicht
+![Cursussen](screenshots/03-cursussen.png)
+
+### Gebruikersbeheer
+![Gebruikers](screenshots/04-gebruikers.png)
+
+### Abonnementenbeheer
+![Abonnementen](screenshots/05-abonnementen.png)
 
 ## Functies
 
@@ -114,20 +137,14 @@ Het database schema bevat de volgende tabellen:
 
 Na het importeren van de database zijn de volgende accounts beschikbaar:
 
-**Admin account:**
-- Gebruikersnaam: `admin`
-- Wachtwoord: `password`
+| Rol | Gebruikersnaam | Wachtwoord |
+|---|---|---|
+| Admin | `admin` | `admin123` |
+| Docent | `docent1` | `docent123` |
+| Student | `student1` | `student123` |
 
-**Student account:**
-- Gebruikersnaam: `student1`
-- Wachtwoord: `password`
-
-⚠️ **Belangrijk:** 
-- Wijzig deze wachtwoorden direct na de eerste login!
-- Om nieuwe wachtwoord hashes te genereren, gebruik het script `setup_passwords.php`:
-  ```bash
-  php setup_passwords.php
-  ```
+> Wijzig deze wachtwoorden direct na de eerste login. Nieuwe wachtwoord-hashes
+> genereren kan met `php setup_passwords.php`.
 
 ## Gebruik
 
@@ -243,7 +260,9 @@ De applicatie gebruikt Bootstrap 5 voor responsive design en moderne UI componen
 
 ## Licentie
 
-Dit project is ontwikkeld voor educatieve doeleinden.
+Dit project valt onder de [Educational Use License](LICENSE). Het is bedoeld
+voor school-/studiedoeleinden. Bronvermelding bij hergebruik is verplicht;
+plagiaat wordt niet toegestaan.
 
 ## Contact
 
