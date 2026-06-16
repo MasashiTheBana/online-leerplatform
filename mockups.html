@@ -1,0 +1,306 @@
+<!DOCTYPE html>
+<html lang="nl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Mockups - Online Leerplatform</title>
+    <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.0/font/bootstrap-icons.css">
+    <style>
+        :root {
+            --blue: #002ef4;
+            --bg: #0a0a0f;
+            --card: #12121a;
+            --nav: #08080c;
+            --border: rgba(255,255,255,0.06);
+            --muted: #8b92a8;
+        }
+        * { font-family: 'Outfit', sans-serif; box-sizing: border-box; margin: 0; padding: 0; }
+        body { background: var(--bg); color: #e8eaef; min-height: 100vh; }
+
+        /* Zelfde navbar op elke mockup */
+        .mockup-nav {
+            height: 64px;
+            background: var(--nav);
+            border-bottom: 1px solid var(--border);
+            display: flex;
+            align-items: center;
+            padding: 0 1.5rem;
+        }
+        .mockup-nav .logo {
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+            color: #fff;
+            font-weight: 700;
+            font-size: 1.25rem;
+        }
+        .mockup-nav .logo i {
+            color: var(--blue);
+            font-size: 1.4rem;
+        }
+
+        .mockup-screen {
+            max-width: 1200px;
+            margin: 0 auto 4rem;
+            padding: 2rem;
+            border: 1px dashed rgba(255,255,255,0.1);
+            border-radius: 8px;
+        }
+        .mockup-screen h2 {
+            color: var(--muted);
+            font-size: 0.9rem;
+            font-weight: 600;
+            margin-bottom: 1rem;
+            text-transform: uppercase;
+            letter-spacing: 0.05em;
+        }
+        .mockup-body { display: flex; min-height: 500px; }
+        .mockup-sidebar {
+            width: 220px;
+            background: var(--nav);
+            border-right: 1px solid var(--border);
+            border-radius: 0 0 0 12px;
+            padding: 1rem 0.75rem;
+        }
+        .mockup-sidebar .item {
+            display: flex;
+            align-items: center;
+            gap: 0.6rem;
+            padding: 0.65rem 1rem;
+            color: var(--muted);
+            border-radius: 12px;
+            margin-bottom: 4px;
+        }
+        .mockup-sidebar .item.active {
+            background: rgba(0, 46, 244, 0.2);
+            color: #fff;
+            border-left: 3px solid var(--blue);
+        }
+        .mockup-main { flex: 1; padding: 1.5rem; }
+
+        .mockup-card {
+            background: var(--card);
+            border: 1px solid var(--border);
+            border-radius: 20px;
+            padding: 1.25rem 1.5rem;
+            margin-bottom: 1rem;
+        }
+        .mockup-card h3 {
+            font-size: 1rem;
+            margin-bottom: 0.75rem;
+            color: #fff;
+        }
+        .btn-mock {
+            background: var(--blue);
+            color: #fff;
+            border: none;
+            padding: 0.6rem 1.2rem;
+            border-radius: 12px;
+            font-weight: 600;
+            font-size: 0.9rem;
+        }
+        .stat-row { display: flex; gap: 1rem; margin-bottom: 1.5rem; }
+        .stat-card {
+            flex: 1;
+            background: linear-gradient(145deg, var(--blue), #001a99);
+            border-radius: 20px;
+            padding: 1.25rem;
+            color: #fff;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+        .stat-card .num { font-size: 1.75rem; font-weight: 800; }
+        .stat-card .label { font-size: 0.85rem; opacity: 0.9; }
+        .banner {
+            background: linear-gradient(135deg, rgba(0,46,244,0.2), rgba(0,46,244,0.06));
+            border: 1px solid rgba(0,46,244,0.3);
+            border-radius: 20px;
+            padding: 1.25rem 1.5rem;
+            margin-bottom: 1.5rem;
+        }
+        .banner h4 { font-size: 1.35rem; margin-bottom: 0.25rem; }
+        .banner p { color: var(--muted); font-size: 0.95rem; }
+    </style>
+</head>
+<body>
+
+    <!-- 1. LOGIN -->
+    <div class="mockup-screen">
+        <h2>Mockup 1 — Inloggen</h2>
+        <div class="mockup-nav">
+            <div class="logo"><i class="bi bi-mortarboard-fill"></i> Online Leerplatform</div>
+        </div>
+        <div style="min-height: 480px; display: flex; align-items: center; justify-content: center; padding: 2rem;">
+            <div style="width: 100%; max-width: 400px;">
+                <p style="text-align: center; color: #fff; font-size: 1.75rem; font-weight: 700; margin-bottom: 0.5rem;">Welkom terug</p>
+                <p style="text-align: center; color: var(--muted); margin-bottom: 1.5rem;">Log in om verder te gaan.</p>
+                <div class="mockup-card">
+                    <div style="background: var(--blue); margin: -1.25rem -1.5rem 1.25rem; padding: 1rem 1.5rem; border-radius: 20px 20px 0 0;">
+                        <span style="color: #fff; font-weight: 600;"><i class="bi bi-box-arrow-in-right"></i> Inloggen</span>
+                    </div>
+                    <div style="height: 44px; background: rgba(255,255,255,0.06); border-radius: 12px; margin-bottom: 1rem;"></div>
+                    <div style="height: 44px; background: rgba(255,255,255,0.06); border-radius: 12px; margin-bottom: 1rem;"></div>
+                    <button class="btn-mock" style="width: 100%; padding: 0.75rem;">Inloggen →</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- 2. ADMIN DASHBOARD -->
+    <div class="mockup-screen">
+        <h2>Mockup 2 — Dashboard (Admin)</h2>
+        <div class="mockup-nav">
+            <div class="logo"><i class="bi bi-mortarboard-fill"></i> Online Leerplatform</div>
+            <div style="margin-left: auto; color: var(--muted); font-size: 0.9rem;">admin · Uitloggen</div>
+        </div>
+        <div class="mockup-body">
+            <div class="mockup-sidebar">
+                <div class="item active"><i class="bi bi-speedometer2"></i> Dashboard</div>
+                <div class="item"><i class="bi bi-people"></i> Gebruikers</div>
+                <div class="item"><i class="bi bi-book"></i> Cursussen</div>
+                <div class="item"><i class="bi bi-credit-card"></i> Abonnementen</div>
+                <div class="item"><i class="bi bi-clipboard-check"></i> Inschrijvingen</div>
+            </div>
+            <div class="mockup-main">
+                <div class="banner">
+                    <h4><i class="bi bi-stars" style="color: var(--blue);"></i> Welkom terug, Admin!</h4>
+                    <p>Hier is je overzicht van gebruikers, cursussen en abonnementen.</p>
+                </div>
+                <div class="stat-row">
+                    <div class="stat-card"><div><div class="label">Gebruikers</div><div class="num">12</div></div><i class="bi bi-people" style="font-size: 2rem; opacity: 0.8;"></i></div>
+                    <div class="stat-card"><div><div class="label">Cursussen</div><div class="num">8</div></div><i class="bi bi-book" style="font-size: 2rem; opacity: 0.8;"></i></div>
+                    <div class="stat-card"><div><div class="label">Actieve Cursussen</div><div class="num">6</div></div><i class="bi bi-check-circle" style="font-size: 2rem; opacity: 0.8;"></i></div>
+                    <div class="stat-card"><div><div class="label">Abonnementen</div><div class="num">5</div></div><i class="bi bi-credit-card" style="font-size: 2rem; opacity: 0.8;"></i></div>
+                </div>
+                <div class="mockup-card">
+                    <h3>Inschrijvingen</h3>
+                    <p style="color: var(--muted);">Totaal: 24 inschrijvingen</p>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- 3. STUDENT DASHBOARD -->
+    <div class="mockup-screen">
+        <h2>Mockup 3 — Dashboard (Student)</h2>
+        <div class="mockup-nav">
+            <div class="logo"><i class="bi bi-mortarboard-fill"></i> Online Leerplatform</div>
+            <div style="margin-left: auto; color: var(--muted); font-size: 0.9rem;">student1 · Uitloggen</div>
+        </div>
+        <div class="mockup-body">
+            <div class="mockup-sidebar">
+                <div class="item active"><i class="bi bi-speedometer2"></i> Dashboard</div>
+                <div class="item"><i class="bi bi-book"></i> Cursussen</div>
+                <div class="item"><i class="bi bi-list-check"></i> Mijn Cursussen</div>
+            </div>
+            <div class="mockup-main">
+                <div class="banner">
+                    <h4><i class="bi bi-stars" style="color: var(--blue);"></i> Welkom terug, Student!</h4>
+                    <p>Dit zijn je cursussen en je voortgang.</p>
+                </div>
+                <div class="stat-row" style="max-width: 320px;">
+                    <div class="stat-card"><div><div class="label">Mijn Cursussen</div><div class="num">3</div></div><i class="bi bi-book" style="font-size: 2rem; opacity: 0.8;"></i></div>
+                </div>
+                <div class="mockup-card">
+                    <h3>Mijn Cursussen</h3>
+                    <table style="width: 100%; color: #e8eaef; font-size: 0.9rem;">
+                        <thead><tr style="color: var(--muted);"><th style="text-align: left; padding: 0.5rem 0;">Titel</th><th>Instructeur</th><th>Duur</th><th>Acties</th></tr></thead>
+                        <tbody>
+                            <tr style="border-top: 1px solid var(--border);"><td style="padding: 0.6rem 0;">PHP Fundamentals</td><td>Jan Jansen</td><td>40 uur</td><td><button class="btn-mock" style="padding: 0.35rem 0.75rem; font-size: 0.8rem;">Details</button></td></tr>
+                            <tr style="border-top: 1px solid var(--border);"><td style="padding: 0.6rem 0;">MySQL Database</td><td>Maria de Vries</td><td>30 uur</td><td><button class="btn-mock" style="padding: 0.35rem 0.75rem; font-size: 0.8rem;">Details</button></td></tr>
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- 4. CURSUSSEN -->
+    <div class="mockup-screen">
+        <h2>Mockup 4 — Cursussen</h2>
+        <div class="mockup-nav">
+            <div class="logo"><i class="bi bi-mortarboard-fill"></i> Online Leerplatform</div>
+            <div style="margin-left: auto;"><button class="btn-mock"><i class="bi bi-plus-circle"></i> Nieuwe Cursus</button></div>
+        </div>
+        <div class="mockup-body">
+            <div class="mockup-sidebar">
+                <div class="item"><i class="bi bi-speedometer2"></i> Dashboard</div>
+                <div class="item active"><i class="bi bi-book"></i> Cursussen</div>
+                <div class="item"><i class="bi bi-list-check"></i> Mijn Cursussen</div>
+            </div>
+            <div class="mockup-main">
+                <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 1.5rem;">
+                    <h3 style="font-size: 1.35rem;">Cursussen</h3>
+                </div>
+                <div class="mockup-card" style="margin-bottom: 1rem;">
+                    <div style="height: 42px; background: rgba(255,255,255,0.05); border-radius: 12px;"></div>
+                </div>
+                <div style="display: grid; grid-template-columns: repeat(3, 1fr); gap: 1rem;">
+                    <div class="mockup-card" style="margin: 0;">
+                        <h3>PHP Fundamentals</h3>
+                        <p style="color: var(--muted); font-size: 0.9rem; margin-bottom: 0.75rem;">Leer de basis van PHP.</p>
+                        <p style="font-size: 0.85rem;">Jan Jansen · 40 uur · €299</p>
+                        <button class="btn-mock" style="margin-top: 0.75rem; padding: 0.4rem 0.9rem; font-size: 0.85rem;">Details</button>
+                    </div>
+                    <div class="mockup-card" style="margin: 0;">
+                        <h3>MySQL Database</h3>
+                        <p style="color: var(--muted); font-size: 0.9rem; margin-bottom: 0.75rem;">Database ontwerp.</p>
+                        <p style="font-size: 0.85rem;">Maria de Vries · 30 uur · €249</p>
+                        <button class="btn-mock" style="margin-top: 0.75rem; padding: 0.4rem 0.9rem; font-size: 0.85rem;">Details</button>
+                    </div>
+                    <div class="mockup-card" style="margin: 0;">
+                        <h3>JavaScript Basics</h3>
+                        <p style="color: var(--muted); font-size: 0.9rem; margin-bottom: 0.75rem;">Introductie JavaScript.</p>
+                        <p style="font-size: 0.85rem;">Lisa van der Berg · 25 uur · €199</p>
+                        <button class="btn-mock" style="margin-top: 0.75rem; padding: 0.4rem 0.9rem; font-size: 0.85rem;">Details</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- 5. CURSUS DETAIL -->
+    <div class="mockup-screen">
+        <h2>Mockup 5 — Cursusdetail</h2>
+        <div class="mockup-nav">
+            <div class="logo"><i class="bi bi-mortarboard-fill"></i> Online Leerplatform</div>
+        </div>
+        <div class="mockup-body">
+            <div class="mockup-sidebar">
+                <div class="item"><i class="bi bi-speedometer2"></i> Dashboard</div>
+                <div class="item active"><i class="bi bi-book"></i> Cursussen</div>
+                <div class="item"><i class="bi bi-list-check"></i> Mijn Cursussen</div>
+            </div>
+            <div class="mockup-main">
+                <button class="btn-mock" style="margin-bottom: 1rem;"><i class="bi bi-arrow-left"></i> Terug</button>
+                <h3 style="font-size: 1.5rem; margin-bottom: 1.5rem;">PHP Fundamentals</h3>
+                <div style="display: grid; grid-template-columns: 1fr 320px; gap: 1.5rem;">
+                    <div>
+                        <div class="mockup-card">
+                            <h3>Beschrijving</h3>
+                            <p style="color: var(--muted); font-size: 0.95rem; line-height: 1.6;">Leer de basis van PHP programmeren. Deze cursus behandelt variabelen, functies, arrays en database-verbindingen.</p>
+                        </div>
+                        <div class="mockup-card">
+                            <h3>Cursus Details</h3>
+                            <table style="width: 100%; color: #e8eaef; font-size: 0.9rem;">
+                                <tr style="border-bottom: 1px solid var(--border);"><td style="padding: 0.5rem 0; color: var(--muted);">Instructeur</td><td style="padding: 0.5rem 0;">Jan Jansen</td></tr>
+                                <tr style="border-bottom: 1px solid var(--border);"><td style="padding: 0.5rem 0; color: var(--muted);">Duur</td><td style="padding: 0.5rem 0;">40 uur</td></tr>
+                                <tr><td style="padding: 0.5rem 0; color: var(--muted);">Prijs</td><td style="padding: 0.5rem 0;">€299,00</td></tr>
+                            </table>
+                        </div>
+                    </div>
+                    <div>
+                        <div class="mockup-card" style="background: linear-gradient(145deg, rgba(0,46,244,0.25), rgba(0,46,244,0.1)); border-color: rgba(0,46,244,0.3); text-align: center; padding: 2rem;">
+                            <button class="btn-mock" style="width: 100%; padding: 1rem; font-size: 1rem;">Inschrijven</button>
+                            <p style="color: var(--muted); font-size: 0.9rem; margin-top: 1rem;">Nu aanmelden voor €299,-</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+</body>
+</html>

@@ -1,0 +1,420 @@
+<!DOCTYPE html>
+<html lang="nl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Online Leerplatform - Flowchart</title>
+    <script src="https://cdn.jsdelivr.net/npm/mermaid@10/dist/mermaid.min.js"></script>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.0/font/bootstrap-icons.css">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background: linear-gradient(135deg, #f5f7fa 0%, #c3cfe2 100%);
+            min-height: 100vh;
+            padding: 20px;
+        }
+        
+        .container {
+            max-width: 1600px;
+            margin: 0 auto;
+        }
+        
+        .header {
+            background: linear-gradient(135deg, #198754 0%, #157347 100%);
+            color: white;
+            padding: 40px 20px;
+            border-radius: 15px;
+            box-shadow: 0 10px 30px rgba(25, 135, 84, 0.3);
+            margin-bottom: 30px;
+            text-align: center;
+        }
+        
+        .header h1 {
+            font-size: 2.5em;
+            margin-bottom: 10px;
+            font-weight: 700;
+            text-shadow: 2px 2px 4px rgba(0,0,0,0.2);
+        }
+        
+        .header p {
+            font-size: 1.1em;
+            opacity: 0.95;
+        }
+        
+        .flowchart-container {
+            background: white;
+            padding: 30px;
+            margin: 25px 0;
+            border-radius: 15px;
+            box-shadow: 0 8px 25px rgba(0,0,0,0.1);
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+            border-left: 5px solid #198754;
+        }
+        
+        .flowchart-container:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 12px 35px rgba(0,0,0,0.15);
+        }
+        
+        .flowchart-container h2 {
+            color: #198754;
+            font-size: 1.8em;
+            margin-bottom: 20px;
+            padding-bottom: 10px;
+            border-bottom: 3px solid #198754;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+        
+        .flowchart-container h2 i {
+            font-size: 1.2em;
+        }
+        
+        .mermaid {
+            text-align: center;
+            background: #f8f9fa;
+            padding: 20px;
+            border-radius: 10px;
+            margin-top: 15px;
+            overflow-x: auto;
+        }
+        
+        .toc {
+            background: white;
+            padding: 25px;
+            border-radius: 15px;
+            box-shadow: 0 8px 25px rgba(0,0,0,0.1);
+            margin-bottom: 30px;
+            border-left: 5px solid #198754;
+        }
+        
+        .toc h2 {
+            color: #198754;
+            margin-bottom: 15px;
+            font-size: 1.5em;
+        }
+        
+        .toc ul {
+            list-style: none;
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 10px;
+        }
+        
+        .toc li {
+            padding: 10px 15px;
+            background: #f8f9fa;
+            border-radius: 8px;
+            transition: all 0.3s ease;
+        }
+        
+        .toc li:hover {
+            background: #198754;
+            color: white;
+            transform: translateX(5px);
+        }
+        
+        .toc a {
+            color: #333;
+            text-decoration: none;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            font-weight: 500;
+        }
+        
+        .toc li:hover a {
+            color: white;
+        }
+        
+        .footer {
+            text-align: center;
+            margin-top: 40px;
+            padding: 20px;
+            color: #666;
+        }
+        
+        @media (max-width: 768px) {
+            .header h1 {
+                font-size: 1.8em;
+            }
+            
+            .flowchart-container {
+                padding: 20px;
+            }
+            
+            .toc ul {
+                grid-template-columns: 1fr;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="header">
+            <h1><i class="bi bi-diagram-3"></i> Online Leerplatform - Flowchart</h1>
+            <p>Visuele weergave van de applicatie flows en processen</p>
+        </div>
+        
+        <div class="toc">
+            <h2><i class="bi bi-list-ul"></i> Inhoudsopgave</h2>
+            <ul>
+                <li><a href="#auth"><i class="bi bi-shield-lock"></i> Authenticatie Flow</a></li>
+                <li><a href="#admin"><i class="bi bi-person-badge"></i> Admin Flow</a></li>
+                <li><a href="#student"><i class="bi bi-person"></i> Student Flow</a></li>
+                <li><a href="#crud"><i class="bi bi-gear"></i> CRUD Operaties</a></li>
+                <li><a href="#database"><i class="bi bi-database"></i> Database Relaties</a></li>
+                <li><a href="#search"><i class="bi bi-search"></i> Zoek & Filter</a></li>
+            </ul>
+        </div>
+
+    <div class="flowchart-container" id="auth">
+        <h2><i class="bi bi-shield-lock"></i> 1. Authenticatie Flow</h2>
+        <div class="mermaid">
+        flowchart TD
+            Start([Start]) --> Homepage[Startpagina]
+            Homepage -->|Niet ingelogd| Login[Login Pagina]
+            Homepage -->|Niet ingelogd| Register[Registratie Pagina]
+            Login -->|Inloggen| Validate{Validatie}
+            Register -->|Registreren| Validate
+            Validate -->|Succes| Dashboard[Dashboard]
+            Validate -->|Fout| Login
+            Dashboard -->|Uitloggen| Logout[Logout]
+            Logout --> Homepage
+        </div>
+    </div>
+
+    <div class="flowchart-container" id="admin">
+        <h2><i class="bi bi-person-badge"></i> 2. Admin Flow</h2>
+        <div class="mermaid">
+        flowchart TD
+            AdminLogin[Admin Login] --> AdminDashboard[Admin Dashboard]
+            AdminDashboard --> Users[Gebruikersbeheer]
+            AdminDashboard --> Courses[Cursusbeheer]
+            AdminDashboard --> Subscriptions[Abonnementen]
+            AdminDashboard --> Enrollments[Inschrijvingen]
+            
+            Users --> UserList[Gebruikers Overzicht]
+            UserList -->|Toevoegen| AddUser[Nieuwe Gebruiker]
+            UserList -->|Bewerken| EditUser[Gebruiker Bewerken]
+            UserList -->|Verwijderen| DeleteUser[Gebruiker Verwijderen]
+            AddUser --> UserList
+            EditUser --> UserList
+            DeleteUser --> UserList
+            
+            Courses --> CourseList[Cursussen Overzicht]
+            CourseList -->|Toevoegen| AddCourse[Nieuwe Cursus]
+            CourseList -->|Bewerken| EditCourse[Cursus Bewerken]
+            CourseList -->|Activeren/Deactiveren| ToggleCourse[Status Wijzigen]
+            CourseList -->|Verwijderen| DeleteCourse[Cursus Verwijderen]
+            AddCourse --> CourseList
+            EditCourse --> CourseList
+            ToggleCourse --> CourseList
+            DeleteCourse --> CourseList
+            
+            Subscriptions --> SubList[Abonnementen Overzicht]
+            SubList -->|Toevoegen| AddSub[Nieuw Abonnement]
+            SubList -->|Bewerken| EditSub[Abonnement Bewerken]
+            SubList -->|Beëindigen| EndSub[Abonnement Beëindigen]
+            AddSub --> SubList
+            EditSub --> SubList
+            EndSub --> SubList
+            
+            Enrollments --> EnrollList[Inschrijvingen Overzicht]
+            EnrollList -->|Toevoegen| AddEnroll[Nieuwe Inschrijving]
+            EnrollList -->|Verwijderen| DeleteEnroll[Inschrijving Verwijderen]
+            AddEnroll --> EnrollList
+            DeleteEnroll --> EnrollList
+        </div>
+    </div>
+
+    <div class="flowchart-container" id="student">
+        <h2><i class="bi bi-person"></i> 3. Student Flow</h2>
+        <div class="mermaid">
+        flowchart TD
+            StudentLogin[Student Login] --> StudentDashboard[Student Dashboard]
+            StudentDashboard --> ViewCourses[Bekijk Cursussen]
+            StudentDashboard --> MyCourses[Mijn Cursussen]
+            
+            ViewCourses --> CourseDetail[Cursus Details]
+            CourseDetail -->|Heeft Abonnement| CheckEnroll{Al Ingeschreven?}
+            CheckEnroll -->|Nee| Enroll[Inschrijven]
+            CheckEnroll -->|Ja| AlreadyEnrolled[Al Ingeschreven]
+            Enroll --> MyCourses
+            AlreadyEnrolled --> MyCourses
+            
+            CourseDetail -->|Geen Abonnement| NoSub[Geen Actief Abonnement]
+            NoSub --> ViewCourses
+            
+            MyCourses --> ViewCourseDetail[Bekijk Cursus Details]
+            MyCourses -->|Uitschrijven| Unenroll[Uitschrijven]
+            Unenroll --> MyCourses
+            ViewCourseDetail --> CourseDetail
+        </div>
+    </div>
+
+    <div class="flowchart-container" id="crud">
+        <h2><i class="bi bi-gear"></i> 4. CRUD Operaties Flow</h2>
+        <div class="mermaid">
+        flowchart TD
+            CRUD[CRUD Operaties] --> Create[CREATE]
+            CRUD --> Read[READ]
+            CRUD --> Update[UPDATE]
+            CRUD --> Delete[DELETE]
+            
+            Create --> ValidateCreate{Validatie}
+            ValidateCreate -->|Succes| SaveCreate[Opslaan in Database]
+            ValidateCreate -->|Fout| ErrorCreate[Foutmelding]
+            SaveCreate --> SuccessCreate[Succes]
+            
+            Read --> QueryRead[Database Query]
+            QueryRead --> DisplayRead[Weergave]
+            
+            Update --> LoadData[Data Laden]
+            LoadData --> ValidateUpdate{Validatie}
+            ValidateUpdate -->|Succes| SaveUpdate[Bijwerken Database]
+            ValidateUpdate -->|Fout| ErrorUpdate[Foutmelding]
+            SaveUpdate --> SuccessUpdate[Succes]
+            
+            Delete --> ConfirmDelete{Bevestiging}
+            ConfirmDelete -->|Ja| ExecuteDelete[Verwijderen uit Database]
+            ConfirmDelete -->|Nee| CancelDelete[Annuleren]
+            ExecuteDelete --> SuccessDelete[Succes]
+        </div>
+    </div>
+
+    <div class="flowchart-container" id="database">
+        <h2><i class="bi bi-database"></i> 5. Database Relaties</h2>
+        <div class="mermaid">
+        erDiagram
+            USERS ||--o{ SUBSCRIPTIONS : "heeft"
+            USERS ||--o{ ENROLLMENTS : "heeft"
+            COURSES ||--o{ ENROLLMENTS : "heeft"
+            
+            USERS {
+                int id PK
+                string username
+                string email
+                string password_hash
+                string first_name
+                string last_name
+                enum role
+            }
+            
+            COURSES {
+                int id PK
+                string title
+                text description
+                string instructor
+                int duration_hours
+                decimal price
+                boolean is_active
+            }
+            
+            SUBSCRIPTIONS {
+                int id PK
+                int user_id FK
+                string subscription_type
+                date start_date
+                date end_date
+                boolean is_active
+            }
+            
+            ENROLLMENTS {
+                int id PK
+                int user_id FK
+                int course_id FK
+                timestamp enrolled_at
+            }
+        </div>
+    </div>
+
+    <div class="flowchart-container" id="search">
+        <h2><i class="bi bi-search"></i> 6. Zoek & Filter Flow</h2>
+        <div class="mermaid">
+        flowchart TD
+            SearchPage[Zoek/Filter Pagina] --> InputSearch[Zoekterm Invoeren]
+            SearchPage --> SelectFilter[Filter Selecteren]
+            
+            InputSearch --> BuildQuery[Query Bouwen]
+            SelectFilter --> BuildQuery
+            
+            BuildQuery --> ExecuteQuery[Query Uitvoeren]
+            ExecuteQuery --> DisplayResults[Resultaten Weergeven]
+            
+            DisplayResults -->|Nieuwe Zoekopdracht| InputSearch
+            DisplayResults -->|Reset| SearchPage
+            DisplayResults -->|Selecteer Item| ItemDetail[Item Details]
+        </div>
+    </div>
+
+    <div class="footer">
+        <p><i class="bi bi-info-circle"></i> Online Leerplatform - Flowchart Documentatie</p>
+        <p style="margin-top: 10px; font-size: 0.9em;">Gemaakt met Mermaid.js | <a href="index.php" style="color: #198754;">Terug naar Applicatie</a></p>
+    </div>
+    </div>
+
+    <script>
+        mermaid.initialize({ 
+            startOnLoad: true,
+            theme: 'base',
+            themeVariables: {
+                primaryColor: '#198754',
+                primaryTextColor: '#fff',
+                primaryBorderColor: '#157347',
+                lineColor: '#198754',
+                secondaryColor: '#d4edda',
+                tertiaryColor: '#c3e6cb',
+                background: '#f8f9fa',
+                mainBkg: '#ffffff',
+                secondBkg: '#d4edda',
+                textColor: '#333',
+                edgeLabelBackground: '#fff',
+                clusterBkg: '#e8f5e9',
+                clusterBorder: '#198754',
+                defaultLinkColor: '#198754',
+                titleColor: '#198754',
+                border1: '#198754',
+                border2: '#157347',
+                noteBkgColor: '#fff',
+                noteTextColor: '#333',
+                noteBorderColor: '#198754'
+            },
+            flowchart: {
+                useMaxWidth: true,
+                htmlLabels: true,
+                curve: 'basis',
+                padding: 20,
+                nodeSpacing: 50,
+                rankSpacing: 80
+            },
+            er: {
+                fontSize: 14,
+                padding: 15
+            }
+        });
+        
+        // Smooth scroll voor anchor links
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                e.preventDefault();
+                const target = document.querySelector(this.getAttribute('href'));
+                if (target) {
+                    target.scrollIntoView({
+                        behavior: 'smooth',
+                        block: 'start'
+                    });
+                }
+            });
+        });
+    </script>
+</body>
+</html>
+

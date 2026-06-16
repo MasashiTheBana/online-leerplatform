@@ -1,0 +1,47 @@
+# Editor / IDE
+.vscode/
+.idea/
+*.swp
+*.swo
+.DS_Store
+Thumbs.db
+
+# PHP
+vendor/
+composer.phar
+composer.lock
+
+# Logs
+*.log
+error_log
+php_errors.log
+
+# Cache / temp
+*.cache
+*.tmp
+*.bak
+*~
+
+# Lokale env / secrets (NIET in repo!)
+.env
+.env.*
+!.env.example
+config/secrets.php
+
+# OS-specifieke bestanden
+ehthumbs.db
+Desktop.ini
+
+# Database dumps (commit alleen schema, niet data)
+*.sql.bak
+backup_*.sql
+
+# Cursor / AI tooling
+.cursor/
+
+# XAMPP runtime (mocht het er ooit in belanden)
+xampp/
+
+# Eigen helper-script (niet in repo)
+init_git_repo.bat
+push_to_github.bat

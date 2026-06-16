@@ -1,0 +1,165 @@
+================================================================================
+ONLINE LEERPLATFORM - FLOWCHART (Tekst Versie)
+================================================================================
+
+1. AUTHENTICATIE FLOW
+---------------------
+Start
+  │
+  ├─> Startpagina
+  │     │
+  │     ├─> [Niet ingelogd] ──> Login Pagina
+  │     │                         │
+  │     │                         ├─> Validatie
+  │     │                         │     │
+  │     │                         │     ├─> [Succes] ──> Dashboard
+  │     │                         │     └─> [Fout] ──> Login Pagina
+  │     │
+  │     └─> [Niet ingelogd] ──> Registratie Pagina
+  │                               │
+  │                               └─> Validatie ──> Dashboard
+  │
+  └─> [Uitloggen] ──> Logout ──> Startpagina
+
+
+2. ADMIN FLOW
+-------------
+Admin Login
+  │
+  └─> Admin Dashboard
+        │
+        ├─> Gebruikersbeheer
+        │     │
+        │     └─> Gebruikers Overzicht
+        │           │
+        │           ├─> [Toevoegen] ──> Nieuwe Gebruiker ──> Overzicht
+        │           ├─> [Bewerken] ──> Gebruiker Bewerken ──> Overzicht
+        │           └─> [Verwijderen] ──> Bevestiging ──> Overzicht
+        │
+        ├─> Cursusbeheer
+        │     │
+        │     └─> Cursussen Overzicht
+        │           │
+        │           ├─> [Toevoegen] ──> Nieuwe Cursus ──> Overzicht
+        │           ├─> [Bewerken] ──> Cursus Bewerken ──> Overzicht
+        │           ├─> [Activeren/Deactiveren] ──> Status Wijzigen ──> Overzicht
+        │           └─> [Verwijderen] ──> Bevestiging ──> Overzicht
+        │
+        ├─> Abonnementen
+        │     │
+        │     └─> Abonnementen Overzicht
+        │           │
+        │           ├─> [Toevoegen] ──> Nieuw Abonnement ──> Overzicht
+        │           ├─> [Bewerken] ──> Abonnement Bewerken ──> Overzicht
+        │           └─> [Beëindigen] ──> Bevestiging ──> Overzicht
+        │
+        └─> Inschrijvingen
+              │
+              └─> Inschrijvingen Overzicht
+                    │
+                    ├─> [Toevoegen] ──> Nieuwe Inschrijving ──> Overzicht
+                    └─> [Verwijderen] ──> Bevestiging ──> Overzicht
+
+
+3. STUDENT FLOW
+---------------
+Student Login
+  │
+  └─> Student Dashboard
+        │
+        ├─> Bekijk Cursussen
+        │     │
+        │     └─> Cursus Details
+        │           │
+        │           ├─> [Heeft Abonnement?]
+        │           │     │
+        │           │     ├─> [Ja] ──> [Al Ingeschreven?]
+        │           │     │           │
+        │           │     │           ├─> [Nee] ──> Inschrijven ──> Mijn Cursussen
+        │           │     │           └─> [Ja] ──> Mijn Cursussen
+        │           │     │
+        │           │     └─> [Nee] ──> Geen Actief Abonnement ──> Bekijk Cursussen
+        │           │
+        │           └─> Terug naar Overzicht
+        │
+        └─> Mijn Cursussen
+              │
+              ├─> Bekijk Cursus Details ──> Cursus Details
+              └─> [Uitschrijven] ──> Bevestiging ──> Mijn Cursussen
+
+
+4. CRUD OPERATIES FLOW
+----------------------
+CRUD Operaties
+  │
+  ├─> CREATE (Aanmaken)
+  │     │
+  │     └─> Validatie ──> [Succes] ──> Opslaan Database ──> Succes
+  │                         [Fout] ──> Foutmelding
+  │
+  ├─> READ (Lezen)
+  │     │
+  │     └─> Database Query ──> Weergave
+  │
+  ├─> UPDATE (Bijwerken)
+  │     │
+  │     └─> Data Laden ──> Validatie ──> [Succes] ──> Bijwerken Database ──> Succes
+  │                                      [Fout] ──> Foutmelding
+  │
+  └─> DELETE (Verwijderen)
+        │
+        └─> Bevestiging ──> [Ja] ──> Verwijderen Database ──> Succes
+                            [Nee] ──> Annuleren
+
+
+5. DATABASE RELATIES
+-------------------
+USERS (1) ──────< (N) SUBSCRIPTIONS
+  │
+  │
+  └───< (N) ENROLLMENTS >─── (N) COURSES
+
+Relaties:
+- Een gebruiker kan meerdere abonnementen hebben
+- Een gebruiker kan meerdere inschrijvingen hebben
+- Een cursus kan meerdere inschrijvingen hebben
+- Een inschrijving behoort tot één gebruiker en één cursus
+
+
+6. ZOEK & FILTER FLOW
+---------------------
+Zoek/Filter Pagina
+  │
+  ├─> Zoekterm Invoeren
+  └─> Filter Selecteren
+        │
+        └─> Query Bouwen ──> Query Uitvoeren ──> Resultaten Weergeven
+                                                      │
+                                                      ├─> [Nieuwe Zoekopdracht] ──> Zoekterm Invoeren
+                                                      ├─> [Reset] ──> Zoek/Filter Pagina
+                                                      └─> [Selecteer Item] ──> Item Details
+
+
+7. BEVEILIGING FLOW
+-------------------
+Elke Pagina
+  │
+  └─> [Ingelogd?]
+        │
+        ├─> [Nee] ──> Redirect naar Login
+        │
+        └─> [Ja] ──> [Admin Pagina?]
+                      │
+                      ├─> [Ja] ──> [Is Admin?]
+                      │             │
+                      │             ├─> [Ja] ──> Toegang Verleend
+                      │             └─> [Nee] ──> Redirect naar Dashboard
+                      │
+                      └─> [Nee] ──> Toegang Verleend
+
+
+================================================================================
+EINDE FLOWCHART
+================================================================================
+
+
